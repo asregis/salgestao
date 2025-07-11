@@ -20,8 +20,8 @@ export default {
         'sal-accent': '#4FFFB0',
       },
       fontFamily: {
-        'primary': ['nulshock-light', 'sans-serif'],
-        'secondary': ['galvji', 'sans-serif'],
+        'primary': ['Rubik', 'sans-serif'],
+        'secondary': ['Open Sans', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

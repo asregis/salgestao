@@ -40,11 +40,11 @@ const differentials = [
 ---
 
 <section id="diferenciais" class="py-16 lg:py-20 bg-dark-surface">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
       <!-- Header -->
-      <div class="text-center mb-16">
-        <h2 class="font-primary font-bold text-3xl lg:text-4xl text-dark-text mb-6">
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="font-primary font-bold text-3xl lg:text-4xl xl:text-5xl text-dark-text mb-6">
           Por que Escolher a SAL?
         </h2>
         <p class="text-lg lg:text-xl text-dark-text-secondary font-secondary max-w-3xl mx-auto">
@@ -55,7 +55,7 @@ const differentials = [
       <!-- Differentials Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {differentials.map((differential, index) => (
-          <div class="group bg-dark-card border border-dark-border hover:border-sal-accent/30 rounded-xl p-8 transition-all duration-300 hover:shadow-2xl animate-slide-up" style={`animation-delay: ${index * 100}ms`}>
+          <div class="group bg-dark-card border border-dark-border hover:border-sal-accent/30 rounded-xl p-6 sm:p-8 transition-all duration-300 hover:shadow-2xl animate-slide-up" style={`animation-delay: ${index * 100}ms`}>
             <div class="flex flex-col items-center text-center">
               <div class={`w-16 h-16 bg-gradient-to-br ${differential.color} rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                 <i data-lucide={differential.icon} class="w-8 h-8 text-white"></i>

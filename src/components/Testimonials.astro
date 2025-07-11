@@ -59,11 +59,12 @@ const testimonials = [
     <div class="max-w-6xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-16">
-        <h2 class="font-primary font-bold text-3xl lg:text-4xl text-dark-text mb-6">
+        <h2 class="font-primary font-bold text-3xl lg:text-4xl xl:text-5xl text-dark-text mb-6">
           O que Nossos Clientes Dizem
         </h2>
         <p class="text-lg lg:text-xl text-dark-text-secondary font-secondary max-w-3xl mx-auto">
-          Veja como a SAL tem transformado a gestão financeira de empresas de diversos segmentos
+          Veja como a SAL tem transformado a gestão financeira<br class="hidden sm:block"/>
+          de empresas de diversos segmentos.
         </p>
       </div>
 
@@ -72,8 +73,8 @@ const testimonials = [
         <div class="testimonials-wrapper" id="testimonials-wrapper">
           <div class="testimonials-track flex transition-transform duration-500 ease-in-out" id="testimonials-track">
             <!-- Último slide duplicado para início -->
-            <div class="testimonial-slide w-full flex-shrink-0 px-8">
-              <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-4">
+            <div class="testimonial-slide w-full flex-shrink-0 px-4 sm:px-8">
+              <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-6 sm:p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-2 sm:mx-4">
                 <!-- Stars -->
                 <div class="flex justify-center mb-6">
                   {Array.from({ length: testimonials[testimonials.length - 1].rating }).map((_, i) => (
@@ -95,11 +96,11 @@ const testimonials = [
 
                 <!-- Author -->
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-gradient-to-br from-sal-accent to-sal-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <span class="text-white font-bold text-xl">
-                      {testimonials[testimonials.length - 1].name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
+                                      <div class="w-16 h-16 bg-gradient-to-br from-sal-accent to-sal-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <span class="text-white font-bold text-xl font-primary">
+                        {testimonials[testimonials.length - 1].name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
                   <h4 class="font-primary font-bold text-dark-text text-lg mb-1">
                     {testimonials[testimonials.length - 1].name}
                   </h4>
@@ -115,8 +116,8 @@ const testimonials = [
 
             <!-- Slides originais -->
             {testimonials.map((testimonial, index) => (
-              <div class="testimonial-slide w-full flex-shrink-0 px-8">
-                <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-4">
+              <div class="testimonial-slide w-full flex-shrink-0 px-4 sm:px-8">
+                <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-6 sm:p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-2 sm:mx-4">
                   <!-- Stars -->
                   <div class="flex justify-center mb-6">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
@@ -139,7 +140,7 @@ const testimonials = [
                   <!-- Author -->
                   <div class="text-center">
                     <div class="w-16 h-16 bg-gradient-to-br from-sal-accent to-sal-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                      <span class="text-white font-bold text-xl">
+                      <span class="text-white font-bold text-xl font-primary">
                         {testimonial.name.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
@@ -158,8 +159,8 @@ const testimonials = [
             ))}
 
             <!-- Primeiro slide duplicado para final -->
-            <div class="testimonial-slide w-full flex-shrink-0 px-8">
-              <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-4">
+            <div class="testimonial-slide w-full flex-shrink-0 px-4 sm:px-8">
+              <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-6 sm:p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-2 sm:mx-4">
                 <!-- Stars -->
                 <div class="flex justify-center mb-6">
                   {Array.from({ length: testimonials[0].rating }).map((_, i) => (
@@ -182,7 +183,7 @@ const testimonials = [
                 <!-- Author -->
                 <div class="text-center">
                   <div class="w-16 h-16 bg-gradient-to-br from-sal-accent to-sal-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <span class="text-white font-bold text-xl">
+                    <span class="text-white font-bold text-xl font-primary">
                       {testimonials[0].name.split(' ').map(n => n[0]).join('')}
                     </span>
                   </div>
@@ -202,13 +203,13 @@ const testimonials = [
         </div>
 
         <!-- Navigation Arrows -->
-        <button class="testimonials-nav prev-btn absolute -left-6 top-1/2 transform -translate-y-1/2 bg-dark-card hover:bg-dark-surface border border-dark-border rounded-full p-4 transition-all duration-300 hover:scale-110 hover:border-sal-accent/50 shadow-xl z-20">
-          <svg class="w-6 h-6 text-sal-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button class="testimonials-nav prev-btn absolute -left-4 lg:-left-6 top-1/2 transform -translate-y-1/2 bg-dark-card hover:bg-dark-surface border border-dark-border rounded-full p-3 lg:p-4 transition-all duration-300 hover:scale-110 hover:border-sal-accent/50 shadow-xl z-20 hidden md:block">
+          <svg class="w-5 h-5 lg:w-6 lg:h-6 text-sal-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
           </svg>
         </button>
-        <button class="testimonials-nav next-btn absolute -right-6 top-1/2 transform -translate-y-1/2 bg-dark-card hover:bg-dark-surface border border-dark-border rounded-full p-4 transition-all duration-300 hover:scale-110 hover:border-sal-accent/50 shadow-xl z-20">
-          <svg class="w-6 h-6 text-sal-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button class="testimonials-nav next-btn absolute -right-4 lg:-right-6 top-1/2 transform -translate-y-1/2 bg-dark-card hover:bg-dark-surface border border-dark-border rounded-full p-3 lg:p-4 transition-all duration-300 hover:scale-110 hover:border-sal-accent/50 shadow-xl z-20 hidden md:block">
+          <svg class="w-5 h-5 lg:w-6 lg:h-6 text-sal-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
           </svg>
         </button>
@@ -221,6 +222,13 @@ const testimonials = [
               data-index={index}
             ></button>
           ))}
+        </div>
+        
+        <!-- Mobile Swipe Hint -->
+        <div class="block md:hidden text-center mt-4">
+          <p class="text-dark-text-secondary/60 text-sm font-secondary">
+            Deslize para ver mais depoimentos
+          </p>
         </div>
       </div>
     </div>
@@ -381,11 +389,21 @@ const testimonials = [
   
   @media (max-width: 768px) {
     .testimonial-slide {
-      min-height: 400px;
+      min-height: 350px;
     }
     
     .testimonials-container {
       padding: 0 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .testimonials-container {
+      padding: 0 5px;
+    }
+    
+    .testimonial-slide {
+      min-height: 320px;
     }
   }
 </style> 

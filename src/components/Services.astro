@@ -44,11 +44,12 @@ const serviceGroups = [
     <div class="max-w-6xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-16">
-        <h2 class="font-primary font-bold text-3xl lg:text-4xl text-dark-text mb-6">
+        <h2 class="font-primary font-bold text-3xl lg:text-4xl xl:text-5xl text-dark-text mb-6">
           Nossos Serviços
         </h2>
         <p class="text-lg lg:text-xl text-dark-text-secondary font-secondary max-w-3xl mx-auto">
-          Soluções completas em BPO Financeiro para que você possa focar no crescimento do seu negócio
+          Soluções completas em BPO Financeiro para que você possa<br class="hidden sm:block"/>
+          focar no crescimento do seu negócio.
         </p>
       </div>
 
@@ -57,11 +58,11 @@ const serviceGroups = [
         {serviceGroups.map((group, index) => (
           <div class="group">
             <!-- Icon and Title -->
-            <div class="flex items-center mb-6">
+            <div class="flex items-center mb-6 justify-center lg:justify-start">
               <div class={`w-14 h-14 bg-gradient-to-br ${group.color} rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                 <i data-lucide={group.icon} class="w-7 h-7 text-white"></i>
               </div>
-              <div>
+              <div class="text-center lg:text-left">
                 <h3 class="font-primary font-bold text-xl text-dark-text group-hover:text-sal-accent transition-colors duration-300">
                   {group.category}
                 </h3>
@@ -72,9 +73,9 @@ const serviceGroups = [
             </div>
             
             <!-- Services List -->
-            <div class="space-y-3 ml-18">
+            <div class="space-y-3 ml-0 md:ml-18 text-center lg:text-left">
               {group.services.map((service, serviceIndex) => (
-                <div class="flex items-start gap-3 animate-slide-up" style={`animation-delay: ${(index * 4 + serviceIndex) * 100}ms`}>
+                <div class="flex items-start gap-3 animate-slide-up justify-center lg:justify-start" style={`animation-delay: ${(index * 4 + serviceIndex) * 100}ms`}>
                   <div class="w-2 h-2 bg-sal-accent rounded-full mt-2 flex-shrink-0"></div>
                   <p class="text-dark-text-secondary font-secondary leading-relaxed">
                     {service}
@@ -88,27 +89,27 @@ const serviceGroups = [
 
       <!-- Bottom Section -->
       <div class="mt-16 text-center">
-        <div class="bg-dark-card border border-dark-border rounded-xl p-8 lg:p-12 shadow-lg">
-          <h3 class="font-primary font-bold text-2xl text-dark-text mb-4">
+        <div class="bg-dark-card border border-dark-border rounded-xl p-6 sm:p-8 lg:p-12 shadow-lg">
+          <h3 class="font-primary font-bold text-xl sm:text-2xl text-dark-text mb-4">
             Terceirização Completa
           </h3>
-          <p class="text-lg text-dark-text-secondary font-secondary mb-6 max-w-2xl mx-auto">
+          <p class="text-base sm:text-lg text-dark-text-secondary font-secondary mb-6 max-w-2xl mx-auto">
             Oferecemos um serviço completo de BPO Financeiro, permitindo que sua equipe foque no core business enquanto cuidamos de toda a gestão financeira.
           </p>
           <div class="flex flex-wrap justify-center gap-4 text-sm text-dark-text-secondary">
-            <span class="flex items-center gap-2">
+            <span class="flex items-center gap-2 font-secondary">
               <i data-lucide="check-circle" class="w-4 h-4 text-sal-accent"></i>
               Equipe especializada
             </span>
-            <span class="flex items-center gap-2">
+            <span class="flex items-center gap-2 font-secondary">
               <i data-lucide="check-circle" class="w-4 h-4 text-sal-accent"></i>
               Tecnologia avançada
             </span>
-            <span class="flex items-center gap-2">
+            <span class="flex items-center gap-2 font-secondary">
               <i data-lucide="check-circle" class="w-4 h-4 text-sal-accent"></i>
               Relatórios personalizados
             </span>
-            <span class="flex items-center gap-2">
+            <span class="flex items-center gap-2 font-secondary">
               <i data-lucide="check-circle" class="w-4 h-4 text-sal-accent"></i>
               Suporte dedicado
             </span>

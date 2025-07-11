@@ -45,7 +45,7 @@ const statistics = [
   {
     id: 'stat-4',
     value: 87,
-    label: 'Têm dificuldades para tomar decisões estratégicas',
+    label: 'Têm dificuldades nas decisões estratégicas',
     insight: 'Falta de dados precisos limita o crescimento',
     icon: 'trending-down',
     color: {
@@ -73,24 +73,25 @@ const statistics = [
       <div class="text-center mb-16">
         <div class="inline-flex items-center gap-2 bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
           <i data-lucide="alert-circle" class="w-4 h-4"></i>
-          Alerta: Situação Crítica
+          <span class="font-secondary">Alerta: Situação Crítica</span>
         </div>
                  <h2 class="font-primary font-bold text-3xl lg:text-4xl xl:text-5xl text-dark-text mb-6">
            A Realidade das Empresas
-           <span class="block text-sal-gold">
+           <span class="block text-sal-gold font-primary">
              Brasileiras
            </span>
          </h2>
         <p class="text-lg lg:text-xl text-dark-text-secondary font-secondary max-w-3xl mx-auto leading-relaxed">
-          Pesquisas recentes revelam dados alarmantes sobre a gestão financeira empresarial no Brasil
+          Pesquisas recentes revelam dados alarmantes sobre a gestão financeira<br class="hidden sm:block"/>
+          empresarial no Brasil.
         </p>
       </div>
 
       <!-- Statistics Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16">
         {statistics.map((stat, index) => (
           <div 
-            class={`statistic-card group relative bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border hover:border-${stat.color.secondary}/30 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl animate-slide-up`}
+            class={`statistic-card group relative bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border hover:border-${stat.color.secondary}/30 rounded-2xl p-6 sm:p-8 transition-all duration-500 hover:shadow-2xl animate-slide-up min-h-[380px] sm:min-h-[420px] flex flex-col justify-between`}
             style={`animation-delay: ${stat.delay}ms`}
             data-stat-id={stat.id}
             data-stat-value={stat.value}
@@ -99,58 +100,73 @@ const statistics = [
             <div class={`absolute inset-0 bg-gradient-to-br ${stat.color.primary} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-500`}></div>
             
             <!-- Content -->
-            <div class="relative z-10">
-              <!-- Icon -->
-              <div class={`inline-flex items-center justify-center w-16 h-16 bg-${stat.color.bg} border border-${stat.color.border} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <i data-lucide={stat.icon} class={`w-8 h-8 text-${stat.color.secondary}`}></i>
-              </div>
+            <div class="relative z-10 flex flex-col h-full">
+              <!-- Top Section -->
+              <div class="flex-grow">
+                <!-- Icon -->
+                <div class={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}
+                     style={`background-color: ${stat.color.secondary === 'red-400' ? 'rgba(239, 68, 68, 0.1)' : stat.color.secondary === 'orange-400' ? 'rgba(251, 146, 60, 0.1)' : stat.color.secondary === 'yellow-400' ? 'rgba(250, 204, 21, 0.1)' : stat.color.secondary === 'blue-400' ? 'rgba(96, 165, 250, 0.1)' : 'rgba(156, 163, 175, 0.1)'}; border: 1px solid ${stat.color.secondary === 'red-400' ? 'rgba(239, 68, 68, 0.2)' : stat.color.secondary === 'orange-400' ? 'rgba(251, 146, 60, 0.2)' : stat.color.secondary === 'yellow-400' ? 'rgba(250, 204, 21, 0.2)' : stat.color.secondary === 'blue-400' ? 'rgba(96, 165, 250, 0.2)' : 'rgba(156, 163, 175, 0.2)'}`}>
+                  <i data-lucide={stat.icon} class="w-8 h-8"
+                     style={`color: ${stat.color.secondary === 'red-400' ? '#f87171' : stat.color.secondary === 'orange-400' ? '#fb923c' : stat.color.secondary === 'yellow-400' ? '#facc15' : stat.color.secondary === 'blue-400' ? '#60a5fa' : stat.color.secondary}`}></i>
+                </div>
 
-              <!-- Progress Ring -->
-              <div class="relative mb-6">
-                <svg class="w-24 h-24 mx-auto -rotate-90" viewBox="0 0 100 100">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="45"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="text-dark-border"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="45"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    class={`text-${stat.color.secondary} progress-ring`}
-                    style="stroke-dasharray: 283; stroke-dashoffset: 283;"
-                    data-progress={stat.value}
-                  />
-                </svg>
-                
-                <!-- Percentage -->
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <span class={`text-3xl lg:text-4xl font-bold text-${stat.color.secondary} counter`} data-target={stat.value}>
-                    0
-                  </span>
-                  <span class={`text-2xl lg:text-3xl font-bold text-${stat.color.secondary} ml-1`}>%</span>
+                <!-- Progress Ring -->
+                <div class="relative mb-6 text-center">
+                  <svg class="w-24 h-24 mx-auto -rotate-90" viewBox="0 0 100 100">
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="text-dark-border"
+                    />
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      class="progress-ring"
+                      style={`stroke-dasharray: 283; stroke-dashoffset: 283; stroke: ${stat.color.secondary === 'red-400' ? '#f87171' : stat.color.secondary === 'orange-400' ? '#fb923c' : stat.color.secondary === 'yellow-400' ? '#facc15' : stat.color.secondary === 'blue-400' ? '#60a5fa' : stat.color.secondary}`}
+                      data-progress={stat.value}
+                    />
+                  </svg>
+                  
+                  <!-- Percentage -->
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-2xl lg:text-3xl font-bold counter" data-target={stat.value}
+                          style={`color: ${stat.color.secondary === 'red-400' ? '#f87171' : stat.color.secondary === 'orange-400' ? '#fb923c' : stat.color.secondary === 'yellow-400' ? '#facc15' : stat.color.secondary === 'blue-400' ? '#60a5fa' : stat.color.secondary}`}>
+                      0
+                    </span>
+                    <span class="text-xl lg:text-2xl font-bold ml-1"
+                          style={`color: ${stat.color.secondary === 'red-400' ? '#f87171' : stat.color.secondary === 'orange-400' ? '#fb923c' : stat.color.secondary === 'yellow-400' ? '#facc15' : stat.color.secondary === 'blue-400' ? '#60a5fa' : stat.color.secondary}`}>%</span>
+                  </div>
+                </div>
+
+                <!-- Label -->
+                <h3 class="font-primary font-semibold text-dark-text text-lg mb-3 leading-tight text-center">
+                  {stat.label}
+                </h3>
+
+                <!-- Insight Section -->
+                <div class="relative">
+                  <!-- Reveal Text (Hidden on mobile) -->
+                  <p class="hidden md:block text-dark-text-secondary/60 font-secondary text-sm leading-relaxed opacity-100 group-hover:opacity-0 transition-opacity duration-300 text-center italic">
+                    Passe o mouse para revelar...
+                  </p>
+                  
+                  <!-- Actual Insight (Always visible on mobile, hover reveal on desktop) -->
+                  <p class="text-dark-text-secondary font-secondary text-sm leading-relaxed text-center md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-300 md:absolute md:inset-0">
+                    {stat.insight}
+                  </p>
                 </div>
               </div>
 
-              <!-- Label -->
-              <h3 class="font-primary font-semibold text-dark-text text-lg mb-3 leading-tight">
-                {stat.label}
-              </h3>
-
-              <!-- Insight -->
-              <p class="text-dark-text-secondary font-secondary text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {stat.insight}
-              </p>
-
-              <!-- Impact Bar -->
+              <!-- Bottom Section - Impact Bar -->
               <div class="mt-4 h-1 bg-dark-border rounded-full overflow-hidden">
                 <div 
                   class={`h-full bg-gradient-to-r ${stat.color.primary} rounded-full impact-bar`}
@@ -165,26 +181,29 @@ const statistics = [
 
              <!-- Solution CTA -->
        <div class="text-center">
-         <a 
-           href="https://wa.me/5548999277753?text=Olá! Vi os dados sobre gestão financeira e gostaria de saber como a SAL pode ajudar minha empresa a fazer parte dos 2% que fazem gestão profissional."
-           target="_blank"
-           rel="noopener noreferrer"
-           class="inline-flex items-center gap-3 bg-gradient-to-r from-sal-accent to-sal-gold p-1 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
-         >
-           <div class="bg-dark-surface rounded-xl px-8 py-6 flex items-center gap-4">
-             <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-sal-accent to-sal-gold rounded-xl">
-               <i data-lucide="trending-up" class="w-6 h-6 text-white"></i>
+         <div class="max-w-sm sm:max-w-md mx-auto px-4 sm:px-0">
+           <a 
+             href="https://wa.me/5548999277753?text=Olá! Vi os dados sobre gestão financeira e gostaria de saber como a SAL pode ajudar minha empresa a fazer parte dos 2% que fazem gestão profissional."
+             target="_blank"
+             rel="noopener noreferrer"
+             class="group relative inline-flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-primary font-semibold px-6 sm:px-8 py-4 rounded-xl shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105 hover:-translate-y-1 w-full text-sm sm:text-base"
+           >
+             <!-- Background glow effect -->
+             <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                
+             <!-- Text -->
+             <span class="relative z-10 text-center leading-tight uppercase">
+               <span class="hidden sm:inline">Junte-se aos 2% que fazem gestão financeira profissional</span>
+               <span class="sm:hidden">Junte-se aos 2%</span>
+             </span>
+             
+             <!-- Arrow indicator -->
+             <div class="relative z-10 flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 ml-1 sm:ml-2">
+               <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:translate-x-1 transition-transform duration-300"></i>
              </div>
-             <div class="text-left">
-               <h3 class="font-primary font-bold text-dark-text text-lg">
-                 Transforme esses números
-               </h3>
-               <p class="text-dark-text-secondary font-secondary text-sm">
-                 Junte-se aos 2% que fazem gestão financeira profissional
-               </p>
-             </div>
-           </div>
-         </a>
+           </a>
+          
+         </div>
        </div>
     </div>
   </div>
@@ -241,7 +260,7 @@ const statistics = [
     });
 
     // Counter animation
-    function animateCounter(element, target) {
+    function animateCounter(element: any, target: number) {
       if (!element || typeof target !== 'number') return;
       
       let current = 0;
@@ -261,7 +280,7 @@ const statistics = [
     }
 
     // Progress ring animation
-    function animateProgressRing(element, progress) {
+    function animateProgressRing(element: any, progress: number) {
       if (!element || typeof progress !== 'number') return;
       
       const circumference = 2 * Math.PI * 45; // r = 45
@@ -272,7 +291,7 @@ const statistics = [
     }
 
     // Impact bar animation
-    function animateImpactBar(element, width) {
+    function animateImpactBar(element: any, width: number) {
       if (!element || typeof width !== 'number') return;
       
       setTimeout(() => {
