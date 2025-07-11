@@ -1,0 +1,391 @@
+---
+const testimonials = [
+  {
+    id: 1,
+    quote: "A SAL transformou a gestão financeira da nossa empresa. Agora podemos focar no crescimento enquanto eles cuidam de toda a parte financeira com excelência.",
+    name: "Carlos Silva",
+    role: "CEO",
+    company: "TechStart Soluções",
+    rating: 5
+  },
+  {
+    id: 2,
+    quote: "Desde que terceirizamos nossa gestão financeira com a SAL, nossa produtividade aumentou 40%. A equipe agora pode se dedicar ao que realmente importa: nossos clientes.",
+    name: "Ana Paula Costa",
+    role: "Diretora Financeira",
+    company: "Inovação Digital",
+    rating: 5
+  },
+  {
+    id: 3,
+    quote: "Os relatórios da SAL são incredibly detalhados e chegam sempre no prazo. Tomamos decisões muito mais assertivas agora.",
+    name: "Roberto Mendes",
+    role: "Empresário",
+    company: "Construção & Engenharia",
+    rating: 5
+  },
+  {
+    id: 4,
+    quote: "A consultoria da SAL identificou oportunidades de economia que nem imaginávamos. Reduzimos custos em 25% no primeiro ano.",
+    name: "Marina Santos",
+    role: "Sócia-Proprietária",
+    company: "Santos & Associados",
+    rating: 5
+  },
+  {
+    id: 5,
+    quote: "Profissionalismo e dedicação excepcionais. A SAL não é apenas um fornecedor, é um parceiro estratégico do nosso crescimento.",
+    name: "Eduardo Ferreira",
+    role: "Diretor Geral",
+    company: "LogisTech Solutions",
+    rating: 5
+  }
+];
+---
+
+<section class="py-16 lg:py-24 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #10b981 0%, transparent 50%), radial-gradient(circle at 75% 75%, #3b82f6 0%, transparent 50%);"></div>
+  </div>
+  
+  <!-- Animated Background Elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-sal-accent/10 to-sal-gold/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-sal-green/10 to-sal-beige/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+  </div>
+
+  <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h2 class="font-primary font-bold text-3xl lg:text-4xl text-dark-text mb-6">
+          O que Nossos Clientes Dizem
+        </h2>
+        <p class="text-lg lg:text-xl text-dark-text-secondary font-secondary max-w-3xl mx-auto">
+          Veja como a SAL tem transformado a gestão financeira de empresas de diversos segmentos
+        </p>
+      </div>
+
+      <!-- Testimonials Slider -->
+      <div class="testimonials-container relative">
+        <div class="testimonials-wrapper" id="testimonials-wrapper">
+          <div class="testimonials-track flex transition-transform duration-500 ease-in-out" id="testimonials-track">
+            <!-- Último slide duplicado para início -->
+            <div class="testimonial-slide w-full flex-shrink-0 px-8">
+              <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-4">
+                <!-- Stars -->
+                <div class="flex justify-center mb-6">
+                  {Array.from({ length: testimonials[testimonials.length - 1].rating }).map((_, i) => (
+                    <svg class="w-5 h-5 text-sal-gold mr-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ))}
+                </div>
+
+                <!-- Quote -->
+                <div class="text-center mb-8">
+                  <svg class="w-12 h-12 text-sal-accent mx-auto mb-4 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                  </svg>
+                  <blockquote class="text-lg lg:text-xl font-secondary text-dark-text italic leading-relaxed">
+                    "{testimonials[testimonials.length - 1].quote}"
+                  </blockquote>
+                </div>
+
+                <!-- Author -->
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-gradient-to-br from-sal-accent to-sal-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <span class="text-white font-bold text-xl">
+                      {testimonials[testimonials.length - 1].name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                  <h4 class="font-primary font-bold text-dark-text text-lg mb-1">
+                    {testimonials[testimonials.length - 1].name}
+                  </h4>
+                  <p class="text-sal-accent font-secondary font-medium text-sm mb-1">
+                    {testimonials[testimonials.length - 1].role}
+                  </p>
+                  <p class="text-dark-text-secondary font-secondary text-sm">
+                    {testimonials[testimonials.length - 1].company}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slides originais -->
+            {testimonials.map((testimonial, index) => (
+              <div class="testimonial-slide w-full flex-shrink-0 px-8">
+                <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-4">
+                  <!-- Stars -->
+                  <div class="flex justify-center mb-6">
+                    {Array.from({ length: testimonial.rating }).map((_, i) => (
+                      <svg class="w-5 h-5 text-sal-gold mr-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    ))}
+                  </div>
+
+                  <!-- Quote -->
+                  <div class="text-center mb-8">
+                    <svg class="w-12 h-12 text-sal-accent mx-auto mb-4 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                    </svg>
+                    <blockquote class="text-lg lg:text-xl font-secondary text-dark-text italic leading-relaxed">
+                      "{testimonial.quote}"
+                    </blockquote>
+                  </div>
+
+                  <!-- Author -->
+                  <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-sal-accent to-sal-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <span class="text-white font-bold text-xl">
+                        {testimonial.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    <h4 class="font-primary font-bold text-dark-text text-lg mb-1">
+                      {testimonial.name}
+                    </h4>
+                    <p class="text-sal-accent font-secondary font-medium text-sm mb-1">
+                      {testimonial.role}
+                    </p>
+                    <p class="text-dark-text-secondary font-secondary text-sm">
+                      {testimonial.company}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <!-- Primeiro slide duplicado para final -->
+            <div class="testimonial-slide w-full flex-shrink-0 px-8">
+              <div class="bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border rounded-2xl p-8 lg:p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm mx-4">
+                <!-- Stars -->
+                <div class="flex justify-center mb-6">
+                  {Array.from({ length: testimonials[0].rating }).map((_, i) => (
+                    <svg class="w-5 h-5 text-sal-gold mr-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ))}
+                </div>
+
+                <!-- Quote -->
+                <div class="text-center mb-8">
+                  <svg class="w-12 h-12 text-sal-accent mx-auto mb-4 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                  </svg>
+                  <blockquote class="text-lg lg:text-xl font-secondary text-dark-text italic leading-relaxed">
+                    "{testimonials[0].quote}"
+                  </blockquote>
+                </div>
+
+                <!-- Author -->
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-gradient-to-br from-sal-accent to-sal-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <span class="text-white font-bold text-xl">
+                      {testimonials[0].name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                  <h4 class="font-primary font-bold text-dark-text text-lg mb-1">
+                    {testimonials[0].name}
+                  </h4>
+                  <p class="text-sal-accent font-secondary font-medium text-sm mb-1">
+                    {testimonials[0].role}
+                  </p>
+                  <p class="text-dark-text-secondary font-secondary text-sm">
+                    {testimonials[0].company}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="testimonials-nav prev-btn absolute -left-6 top-1/2 transform -translate-y-1/2 bg-dark-card hover:bg-dark-surface border border-dark-border rounded-full p-4 transition-all duration-300 hover:scale-110 hover:border-sal-accent/50 shadow-xl z-20">
+          <svg class="w-6 h-6 text-sal-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        <button class="testimonials-nav next-btn absolute -right-6 top-1/2 transform -translate-y-1/2 bg-dark-card hover:bg-dark-surface border border-dark-border rounded-full p-4 transition-all duration-300 hover:scale-110 hover:border-sal-accent/50 shadow-xl z-20">
+          <svg class="w-6 h-6 text-sal-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        <!-- Dots Navigation -->
+        <div class="flex justify-center mt-8 space-x-2">
+          {testimonials.map((_, index) => (
+            <button 
+              class="testimonials-dot w-3 h-3 rounded-full bg-dark-text-secondary/30 hover:bg-sal-accent transition-all duration-300"
+              data-index={index}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Testimonials Infinite Slider
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('testimonials-track');
+    const dots = document.querySelectorAll('.testimonials-dot');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    const originalSlidesCount = dots.length;
+    const totalSlidesCount = originalSlidesCount + 2; // +2 para os slides duplicados
+    
+    // Começa no primeiro slide real (índice 1, pois 0 é o duplicado)
+    let currentIndex = 1;
+    let isTransitioning = false;
+    
+    // Posiciona inicialmente no primeiro slide real
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    function updateSlider(withTransition = true) {
+      if (!track) return;
+      
+      if (withTransition) {
+        track.style.transition = 'transform 0.5s ease-in-out';
+      } else {
+        track.style.transition = 'none';
+      }
+      
+      const translateX = -currentIndex * 100;
+      track.style.transform = `translateX(${translateX}%)`;
+      
+      // Update dots (baseado no índice real, não no índice com duplicados)
+      const realIndex = currentIndex - 1; // Ajusta para índice real
+      dots.forEach((dot, index) => {
+        const isActive = index === (realIndex < 0 ? originalSlidesCount - 1 : realIndex % originalSlidesCount);
+        dot.classList.toggle('bg-sal-accent', isActive);
+        dot.classList.toggle('bg-dark-text-secondary/30', !isActive);
+      });
+    }
+    
+    function nextSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      
+      currentIndex++;
+      updateSlider(true);
+      
+      // Se chegou ao slide duplicado do final, volta instantaneamente para o primeiro real
+      if (currentIndex === totalSlidesCount - 1) {
+        setTimeout(() => {
+          currentIndex = 1;
+          updateSlider(false);
+          isTransitioning = false;
+        }, 500);
+      } else {
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }
+    }
+    
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      
+      currentIndex--;
+      updateSlider(true);
+      
+      // Se chegou ao slide duplicado do início, vai instantaneamente para o último real
+      if (currentIndex === 0) {
+        setTimeout(() => {
+          currentIndex = originalSlidesCount;
+          updateSlider(false);
+          isTransitioning = false;
+        }, 500);
+      } else {
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        if (isTransitioning) return;
+        currentIndex = index + 1; // +1 pois o primeiro é duplicado
+        updateSlider(true);
+      });
+    });
+    
+    // Auto-play
+    setInterval(nextSlide, 5000);
+    
+    // Initialize dots
+    updateSlider(false);
+  });
+</script>
+
+<style>
+  .testimonials-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+  
+  .testimonials-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .testimonials-track {
+    width: 100%;
+  }
+  
+  .testimonial-slide {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .testimonials-nav {
+    opacity: 0.9;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .testimonials-nav:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+  }
+  
+  .testimonials-nav:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+  
+  @media (max-width: 1024px) {
+    .testimonials-container {
+      padding: 0 20px;
+    }
+    
+    .testimonials-nav {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .testimonial-slide {
+      min-height: 400px;
+    }
+    
+    .testimonials-container {
+      padding: 0 10px;
+    }
+  }
+</style> 

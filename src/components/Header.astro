@@ -1,0 +1,177 @@
+---
+---
+
+<header id="main-header" class="z-40 bg-gradient-to-br from-dark-bg via-dark-surface to-dark-bg">
+  <div class="container mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center">
+          <img src="/svg/logo.svg" alt="SAL Gestão Financeira Logo" class="h-10 w-auto">
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#inicio" class="text-dark-text hover:text-sal-accent transition-colors duration-300 font-secondary font-medium">
+          Início
+        </a>
+        <a href="#servicos" class="text-dark-text hover:text-sal-accent transition-colors duration-300 font-secondary font-medium">
+          Serviços
+        </a>
+        <a href="#diferenciais" class="text-dark-text hover:text-sal-accent transition-colors duration-300 font-secondary font-medium">
+          Diferenciais
+        </a>
+        <a href="#contato" class="text-dark-text hover:text-sal-accent transition-colors duration-300 font-secondary font-medium">
+          Contato
+        </a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="flex items-center space-x-4">
+        <a 
+          href="https://wa.me/5548999277753?text=Olá! Gostaria de saber mais sobre os serviços da SAL Gestão Financeira."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-gradient-to-r from-sal-beige to-sal-gold hover:from-sal-gold hover:to-sal-beige text-dark-bg font-secondary font-semibold px-4 py-2 lg:px-6 lg:py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+        >
+          Fale Conosco
+        </a>
+        
+        <!-- Mobile Menu Button -->
+        <button 
+          class="md:hidden p-2 text-dark-text hover:text-sal-accent transition-colors"
+          id="mobile-menu-btn"
+          aria-label="Abrir menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <nav class="py-4 space-y-3 border-t border-dark-border">
+        <a href="#inicio" class="block text-dark-text hover:text-sal-accent transition-colors duration-300 font-secondary font-medium py-2">
+          Início
+        </a>
+        <a href="#servicos" class="block text-dark-text hover:text-sal-accent transition-colors duration-300 font-secondary font-medium py-2">
+          Serviços
+        </a>
+        <a href="#diferenciais" class="block text-dark-text hover:text-sal-accent transition-colors duration-300 font-secondary font-medium py-2">
+          Diferenciais
+        </a>
+        <a href="#contato" class="block text-dark-text hover:text-sal-accent transition-colors duration-300 font-secondary font-medium py-2">
+          Contato
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when clicking on links
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = anchor.getAttribute('href');
+      const target = href ? document.querySelector(href) : null;
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Sticky header on scroll with smooth appearance effect
+  const header = document.getElementById('main-header');
+  let isAnimating = false;
+
+  function showHeader() {
+    if (!header || isAnimating) return;
+    
+    isAnimating = true;
+    
+    // Remove any existing classes
+    header.classList.remove('header-hidden', 'header-exiting');
+    
+    // Add entering animation
+    header.classList.add('header-entering');
+    
+    // After animation ends, set final state
+    setTimeout(() => {
+      header.classList.remove('header-entering');
+      header.classList.add('header-scrolled');
+      isAnimating = false;
+    }, 400);
+  }
+
+  function hideHeader() {
+    if (!header || isAnimating) return;
+    
+    isAnimating = true;
+    
+    // Remove scrolled state
+    header.classList.remove('header-scrolled', 'header-entering');
+    
+    // Add exiting animation
+    header.classList.add('header-exiting');
+    
+    // After animation ends, set final state
+    setTimeout(() => {
+      header.classList.remove('header-exiting');
+      header.classList.add('header-hidden');
+      isAnimating = false;
+    }, 300);
+  }
+
+  function updateHeaderVisibility() {
+    if (!header) return;
+    
+    const currentScrollY = window.scrollY;
+    const scrollThreshold = 100;
+    
+    if (currentScrollY > scrollThreshold) {
+      // Show header when scrolled past threshold
+      if (!header.classList.contains('header-scrolled') && !header.classList.contains('header-entering')) {
+        showHeader();
+      }
+    } else {
+      // Hide header when at top of page
+      if (!header.classList.contains('header-hidden') && !header.classList.contains('header-exiting')) {
+        hideHeader();
+      }
+    }
+  }
+
+  if (header) {
+    // Set initial state
+    updateHeaderVisibility();
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', updateHeaderVisibility);
+    
+    // Also listen for resize events to ensure proper behavior
+    window.addEventListener('resize', updateHeaderVisibility);
+  }
+</script>

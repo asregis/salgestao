@@ -1,0 +1,132 @@
+---
+const serviceGroups = [
+  {
+    category: "Gestão Financeira",
+    description: "Controle completo das suas finanças",
+    services: [
+      "Conciliação bancária automatizada",
+      "Contas a pagar e receber",
+      "Controle de fluxo de caixa",
+      "Gestão de cobranças"
+    ],
+    icon: "wallet",
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    category: "Relatórios e Análises",
+    description: "Insights para tomada de decisões",
+    services: [
+      "Relatórios DRE e DFC",
+      "Dashboard em tempo real (BI)",
+      "Análises de performance",
+      "Planejamento financeiro"
+    ],
+    icon: "bar-chart",
+    color: "from-green-500 to-green-600"
+  },
+  {
+    category: "Documentação Fiscal",
+    description: "Emissão e controle de documentos",
+    services: [
+      "Emissão de boletos",
+      "Notas fiscais",
+      "Controle de impostos",
+      "Arquivo digital organizado"
+    ],
+    icon: "file-text",
+    color: "from-purple-500 to-purple-600"
+  }
+];
+---
+
+<section id="servicos" class="py-16 lg:py-24 bg-gradient-to-br from-dark-bg to-dark-surface">
+  <div class="container mx-auto px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h2 class="font-primary font-bold text-3xl lg:text-4xl text-dark-text mb-6">
+          Nossos Serviços
+        </h2>
+        <p class="text-lg lg:text-xl text-dark-text-secondary font-secondary max-w-3xl mx-auto">
+          Soluções completas em BPO Financeiro para que você possa focar no crescimento do seu negócio
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        {serviceGroups.map((group, index) => (
+          <div class="group">
+            <!-- Icon and Title -->
+            <div class="flex items-center mb-6">
+              <div class={`w-14 h-14 bg-gradient-to-br ${group.color} rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                <i data-lucide={group.icon} class="w-7 h-7 text-white"></i>
+              </div>
+              <div>
+                <h3 class="font-primary font-bold text-xl text-dark-text group-hover:text-sal-accent transition-colors duration-300">
+                  {group.category}
+                </h3>
+                <p class="text-sm text-dark-text-secondary font-secondary">
+                  {group.description}
+                </p>
+              </div>
+            </div>
+            
+            <!-- Services List -->
+            <div class="space-y-3 ml-18">
+              {group.services.map((service, serviceIndex) => (
+                <div class="flex items-start gap-3 animate-slide-up" style={`animation-delay: ${(index * 4 + serviceIndex) * 100}ms`}>
+                  <div class="w-2 h-2 bg-sal-accent rounded-full mt-2 flex-shrink-0"></div>
+                  <p class="text-dark-text-secondary font-secondary leading-relaxed">
+                    {service}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="mt-16 text-center">
+        <div class="bg-dark-card border border-dark-border rounded-xl p-8 lg:p-12 shadow-lg">
+          <h3 class="font-primary font-bold text-2xl text-dark-text mb-4">
+            Terceirização Completa
+          </h3>
+          <p class="text-lg text-dark-text-secondary font-secondary mb-6 max-w-2xl mx-auto">
+            Oferecemos um serviço completo de BPO Financeiro, permitindo que sua equipe foque no core business enquanto cuidamos de toda a gestão financeira.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 text-sm text-dark-text-secondary">
+            <span class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-sal-accent"></i>
+              Equipe especializada
+            </span>
+            <span class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-sal-accent"></i>
+              Tecnologia avançada
+            </span>
+            <span class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-sal-accent"></i>
+              Relatórios personalizados
+            </span>
+            <span class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-sal-accent"></i>
+              Suporte dedicado
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Initialize Lucide icons specifically for this section
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      const lucideGlobal = (window as any).lucide;
+      if (lucideGlobal && lucideGlobal.createIcons) {
+        lucideGlobal.createIcons();
+      }
+    }, 100);
+  });
+</script>

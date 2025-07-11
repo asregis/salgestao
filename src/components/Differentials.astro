@@ -1,0 +1,87 @@
+---
+const differentials = [
+  {
+    icon: "focus",
+    title: "Foco no Core Business",
+    description: "Libere sua equipe para focar no que realmente importa: o crescimento do seu negócio. Deixe a gestão financeira conosco.",
+    color: "from-sal-green to-sal-green-light"
+  },
+  {
+    icon: "users",
+    title: "Consultoria Especializada",
+    description: "Nossa equipe de especialistas oferece consultoria personalizada para otimizar a gestão financeira da sua empresa.",
+    color: "from-sal-beige to-sal-gold"
+  },
+  {
+    icon: "zap",
+    title: "Relatórios Automatizados",
+    description: "Receba relatórios detalhados e automatizados que facilitam o acompanhamento da saúde financeira da sua empresa.",
+    color: "from-sal-gold to-sal-beige"
+  },
+  {
+    icon: "shield-check",
+    title: "Segurança e Confiabilidade",
+    description: "Processos seguros e confiáveis que garantem a integridade dos seus dados financeiros com total transparência.",
+    color: "from-emerald-500 to-emerald-600"
+  },
+  {
+    icon: "clock",
+    title: "Agilidade na Entrega",
+    description: "Prazos cumpridos e entregas pontuais para que você sempre tenha informações atualizadas do seu negócio.",
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    icon: "trending-up",
+    title: "Crescimento Sustentável",
+    description: "Apoiamos o crescimento da sua empresa com análises estratégicas e planejamento financeiro de longo prazo.",
+    color: "from-purple-500 to-purple-600"
+  }
+];
+---
+
+<section id="diferenciais" class="py-16 lg:py-20 bg-dark-surface">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h2 class="font-primary font-bold text-3xl lg:text-4xl text-dark-text mb-6">
+          Por que Escolher a SAL?
+        </h2>
+        <p class="text-lg lg:text-xl text-dark-text-secondary font-secondary max-w-3xl mx-auto">
+          Nossos diferenciais fazem toda a diferença na gestão financeira da sua empresa
+        </p>
+      </div>
+
+      <!-- Differentials Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {differentials.map((differential, index) => (
+          <div class="group bg-dark-card border border-dark-border hover:border-sal-accent/30 rounded-xl p-8 transition-all duration-300 hover:shadow-2xl animate-slide-up" style={`animation-delay: ${index * 100}ms`}>
+            <div class="flex flex-col items-center text-center">
+              <div class={`w-16 h-16 bg-gradient-to-br ${differential.color} rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                <i data-lucide={differential.icon} class="w-8 h-8 text-white"></i>
+              </div>
+              <h3 class="font-primary font-bold text-dark-text text-xl mb-4 group-hover:text-sal-accent transition-colors duration-300">
+                {differential.title}
+              </h3>
+              <p class="text-dark-text-secondary font-secondary leading-relaxed">
+                {differential.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Initialize Lucide icons specifically for this section
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      const lucideGlobal = (window as any).lucide;
+      if (lucideGlobal && lucideGlobal.createIcons) {
+        lucideGlobal.createIcons();
+      }
+    }, 100);
+  });
+</script>

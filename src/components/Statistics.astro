@@ -1,0 +1,306 @@
+---
+const statistics = [
+  {
+    id: 'stat-1',
+    value: 98,
+    label: 'Não fazem gestão financeira completa',
+    insight: 'Apenas 2% das empresas têm controle financeiro adequado',
+    icon: 'alert-triangle',
+    color: {
+      primary: 'from-red-500 to-rose-600',
+      secondary: 'red-400',
+      bg: 'red-500/10',
+      border: 'red-500/20'
+    },
+    delay: 0
+  },
+  {
+    id: 'stat-2',
+    value: 64,
+    label: 'Usam planilhas e métodos manuais',
+    insight: 'Processos antiquados comprometem a eficiência',
+    icon: 'file-spreadsheet',
+    color: {
+      primary: 'from-orange-500 to-amber-600',
+      secondary: 'orange-400',
+      bg: 'orange-500/10',
+      border: 'orange-500/20'
+    },
+    delay: 200
+  },
+  {
+    id: 'stat-3',
+    value: 49,
+    label: 'Gastam muito tempo com rotinas financeiras',
+    insight: 'Tempo que poderia ser investido no core business',
+    icon: 'clock',
+    color: {
+      primary: 'from-yellow-500 to-orange-500',
+      secondary: 'yellow-400',
+      bg: 'yellow-500/10',
+      border: 'yellow-500/20'
+    },
+    delay: 400
+  },
+  {
+    id: 'stat-4',
+    value: 87,
+    label: 'Têm dificuldades para tomar decisões estratégicas',
+    insight: 'Falta de dados precisos limita o crescimento',
+    icon: 'trending-down',
+    color: {
+      primary: 'from-blue-500 to-indigo-600',
+      secondary: 'blue-400',
+      bg: 'blue-500/10',
+      border: 'blue-500/20'
+    },
+    delay: 600
+  }
+];
+---
+
+<!-- Statistics Section -->
+<section class="py-16 lg:py-24 bg-dark-surface relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-sal-accent/20 to-transparent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-sal-gold/20 to-transparent rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <i data-lucide="alert-circle" class="w-4 h-4"></i>
+          Alerta: Situação Crítica
+        </div>
+                 <h2 class="font-primary font-bold text-3xl lg:text-4xl xl:text-5xl text-dark-text mb-6">
+           A Realidade das Empresas
+           <span class="block text-sal-gold">
+             Brasileiras
+           </span>
+         </h2>
+        <p class="text-lg lg:text-xl text-dark-text-secondary font-secondary max-w-3xl mx-auto leading-relaxed">
+          Pesquisas recentes revelam dados alarmantes sobre a gestão financeira empresarial no Brasil
+        </p>
+      </div>
+
+      <!-- Statistics Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {statistics.map((stat, index) => (
+          <div 
+            class={`statistic-card group relative bg-gradient-to-br from-dark-card to-dark-surface border border-dark-border hover:border-${stat.color.secondary}/30 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl animate-slide-up`}
+            style={`animation-delay: ${stat.delay}ms`}
+            data-stat-id={stat.id}
+            data-stat-value={stat.value}
+          >
+            <!-- Background Glow -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${stat.color.primary} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-500`}></div>
+            
+            <!-- Content -->
+            <div class="relative z-10">
+              <!-- Icon -->
+              <div class={`inline-flex items-center justify-center w-16 h-16 bg-${stat.color.bg} border border-${stat.color.border} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <i data-lucide={stat.icon} class={`w-8 h-8 text-${stat.color.secondary}`}></i>
+              </div>
+
+              <!-- Progress Ring -->
+              <div class="relative mb-6">
+                <svg class="w-24 h-24 mx-auto -rotate-90" viewBox="0 0 100 100">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="text-dark-border"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class={`text-${stat.color.secondary} progress-ring`}
+                    style="stroke-dasharray: 283; stroke-dashoffset: 283;"
+                    data-progress={stat.value}
+                  />
+                </svg>
+                
+                <!-- Percentage -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span class={`text-3xl lg:text-4xl font-bold text-${stat.color.secondary} counter`} data-target={stat.value}>
+                    0
+                  </span>
+                  <span class={`text-2xl lg:text-3xl font-bold text-${stat.color.secondary} ml-1`}>%</span>
+                </div>
+              </div>
+
+              <!-- Label -->
+              <h3 class="font-primary font-semibold text-dark-text text-lg mb-3 leading-tight">
+                {stat.label}
+              </h3>
+
+              <!-- Insight -->
+              <p class="text-dark-text-secondary font-secondary text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {stat.insight}
+              </p>
+
+              <!-- Impact Bar -->
+              <div class="mt-4 h-1 bg-dark-border rounded-full overflow-hidden">
+                <div 
+                  class={`h-full bg-gradient-to-r ${stat.color.primary} rounded-full impact-bar`}
+                  style="width: 0%;"
+                  data-width={stat.value}
+                ></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+             <!-- Solution CTA -->
+       <div class="text-center">
+         <a 
+           href="https://wa.me/5548999277753?text=Olá! Vi os dados sobre gestão financeira e gostaria de saber como a SAL pode ajudar minha empresa a fazer parte dos 2% que fazem gestão profissional."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-3 bg-gradient-to-r from-sal-accent to-sal-gold p-1 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
+         >
+           <div class="bg-dark-surface rounded-xl px-8 py-6 flex items-center gap-4">
+             <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-sal-accent to-sal-gold rounded-xl">
+               <i data-lucide="trending-up" class="w-6 h-6 text-white"></i>
+             </div>
+             <div class="text-left">
+               <h3 class="font-primary font-bold text-dark-text text-lg">
+                 Transforme esses números
+               </h3>
+               <p class="text-dark-text-secondary font-secondary text-sm">
+                 Junte-se aos 2% que fazem gestão financeira profissional
+               </p>
+             </div>
+           </div>
+         </a>
+       </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Lucide icons
+    setTimeout(function() {
+      const lucideGlobal = (window as any).lucide;
+      if (lucideGlobal && lucideGlobal.createIcons) {
+        lucideGlobal.createIcons();
+      }
+    }, 100);
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          
+          // Animate counter
+          const counter = card.querySelector('.counter');
+          if (counter) {
+            const target = parseInt(counter.getAttribute('data-target') || '0');
+            animateCounter(counter, target);
+          }
+          
+          // Animate progress ring
+          const progressRing = card.querySelector('.progress-ring');
+          if (progressRing) {
+            const progress = parseInt(progressRing.getAttribute('data-progress') || '0');
+            animateProgressRing(progressRing, progress);
+          }
+          
+          // Animate impact bar
+          const impactBar = card.querySelector('.impact-bar');
+          if (impactBar) {
+            const width = parseInt(impactBar.getAttribute('data-width') || '0');
+            animateImpactBar(impactBar, width);
+          }
+          
+          observer.unobserve(card);
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all statistic cards
+    document.querySelectorAll('.statistic-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Counter animation
+    function animateCounter(element, target) {
+      if (!element || typeof target !== 'number') return;
+      
+      let current = 0;
+      const increment = target / 60; // 60 frames for smooth animation
+      const duration = 2000; // 2 seconds
+      const stepTime = duration / 60;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target.toString();
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current).toString();
+        }
+      }, stepTime);
+    }
+
+    // Progress ring animation
+    function animateProgressRing(element, progress) {
+      if (!element || typeof progress !== 'number') return;
+      
+      const circumference = 2 * Math.PI * 45; // r = 45
+      const offset = circumference - (progress / 100) * circumference;
+      
+      element.style.transition = 'stroke-dashoffset 2s ease-out';
+      element.style.strokeDashoffset = offset.toString();
+    }
+
+    // Impact bar animation
+    function animateImpactBar(element, width) {
+      if (!element || typeof width !== 'number') return;
+      
+      setTimeout(() => {
+        element.style.transition = 'width 1.5s ease-out';
+        element.style.width = width + '%';
+      }, 500);
+    }
+  });
+</script>
+
+<style>
+  .statistic-card {
+    backdrop-filter: blur(10px);
+  }
+  
+  .statistic-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  .counter {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .progress-ring {
+    transition: stroke-dashoffset 2s ease-out;
+  }
+  
+  .impact-bar {
+    transition: width 1.5s ease-out;
+  }
+</style> 
